@@ -41,7 +41,7 @@
     }
     // 清除商店
     function removeShopList() {
-        let btn = document.querySelector('.top-btn-wrap');
+        let btn = document.querySelector('.btn-clean-all');
         btn ? btn.click() : '';
     }
     // 获取 png 下载按钮 attr 默认 mx-click 值 png downIcon('png') eps downIcon('eps') svg downIcon('svg')  
