@@ -14,7 +14,7 @@ jobs:
       - name: Checkout this repository
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: master
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
@@ -35,3 +35,4 @@ jobs:
         with:
           commit_message: "Update bookmark.txt and console.js"
           file_pattern: dist
+          branch: master
