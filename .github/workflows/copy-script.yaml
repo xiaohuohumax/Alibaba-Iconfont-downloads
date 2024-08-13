@@ -1,0 +1,37 @@
+name: Copy Script
+
+on:
+  # 定时每周一晚上8点运行
+  schedule:
+    - cron: "0 20 * * 1"
+  # 手动触发
+  workflow_dispatch:
+
+jobs:
+  copy-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout this repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Checkout Source Code repository
+        uses: actions/checkout@v4
+        with:
+          repository: xiaohuohumax/bookmark-script
+          path: bookmark-script
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Copy bookmark script dist to this repository
+        run: |
+          cp bookmark-script/dist/public/*/www.iconfont.cn/阿里巴巴矢量图标一键下载*/bookmark.txt dist/bookmark.txt
+          cp bookmark-script/dist/public/*/www.iconfont.cn/阿里巴巴矢量图标一键下载*/console.js dist/console.js
+
+      - name: Commit and push schema changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update bookmark.txt and console.js"
+          file_pattern: dist
