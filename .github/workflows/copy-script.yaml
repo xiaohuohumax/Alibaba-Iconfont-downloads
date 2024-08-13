@@ -30,7 +30,7 @@ jobs:
           cp bookmark-script/dist/public/*/www.iconfont.cn/阿里巴巴矢量图标一键下载*/bookmark.txt dist/bookmark.txt
           cp bookmark-script/dist/public/*/www.iconfont.cn/阿里巴巴矢量图标一键下载*/console.js dist/console.js
 
-      - name: Commit and push schema changes
+      - name: Commit and push dist changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Update bookmark.txt and console.js"
